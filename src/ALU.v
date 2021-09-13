@@ -1,12 +1,12 @@
 module ALU #(
-  parameter NB_OPERANDO = 8;
-  parameter NB_OUT = NB_OPERANDO;
-  parameter NB_OPCODE = 6;   
+  parameter NB_OPERANDO = 8,
+  parameter NB_OUT = NB_OPERANDO,
+  parameter NB_OPCODE = 6
 ) (
-  input wire [NB_OPERANDO - 1 : 0] dato_a;
-  input wire [NB_OPERANDO - 1 : 0] dato_b;
-  input wire [NB_OPCODE - 1 : 0] opcode;
-  output wire [NB_OUT - 1 : 0] out;
+  input wire [NB_OPERANDO - 1 : 0] dato_a,
+  input wire [NB_OPERANDO - 1 : 0] dato_b,
+  input wire [NB_OPCODE - 1 : 0] opcode,
+  output wire [NB_OUT - 1 : 0] out
 );
 
   localparam ADD = 6'b100000;
