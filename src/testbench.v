@@ -9,11 +9,12 @@ module testbench_ej1;
 
   ALU instance_ALU(.dato_a(a), .dato_b(b), .out(res), .opcode(opcode));
   
-  initial 
+  initial
     begin
+      $dumpfile("dump.vcd"); $dumpvars;
       #0
-      a = 8'b2;
-      b = 8'b5;
+      a = 8'b00000010;
+      b = 8'b00001000;
       opcode = 6'b0;
       #5
       opcode = 6'b100000;

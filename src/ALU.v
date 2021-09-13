@@ -6,7 +6,7 @@ module ALU #(
   input wire [NB_OPERANDO - 1 : 0] dato_a,
   input wire [NB_OPERANDO - 1 : 0] dato_b,
   input wire [NB_OPCODE - 1 : 0] opcode,
-  output wire [NB_OUT - 1 : 0] out
+  output reg [NB_OUT - 1 : 0] out
 );
 
   localparam ADD = 6'b100000;
