@@ -23,12 +23,14 @@ module ALU #(
 
   always @(*) begin : ALU_operation
     case (opcode)
-      ADD: out = dato_a + dato_b;
-      SUB: out = dato_a - dato_b;
-      AND: out = dato_a & dato_b;
-      OR:  out = dato_a | dato_b;
-      XOR: out = dato_a ^ dato_b;
-      NOR: !(dato_a | dato_b);
+      ADD: result = dato_a + dato_b;
+      SUB: result = dato_a - dato_b;
+      AND: result = dato_a & dato_b;
+      OR:  result = dato_a | dato_b;
+      SRA: result = dato_a >>> dato_b;
+      SRL: result = dato_a >> dato_b;
+      XOR: result = dato_a ^ dato_b;
+      NOR: result = dato_a ~| dato_b;
     endcase
   end
 

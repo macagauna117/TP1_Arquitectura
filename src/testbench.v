@@ -13,12 +13,48 @@ module testbench_ej1;
     begin
       $dumpfile("dump.vcd"); $dumpvars;
       #0
-      a = 8'b00000010;
-      b = 8'b00001000;
+      a = 8'b00001000;
+      b = 8'b00000010;
       opcode = 6'b0;
       #5
-      opcode = 6'b100000;
+      opcode = 6'b100000; // SUM
+      #1
+      $display(res);
       #5
+      opcode = 6'b100010; // SUB
+      #1
+      $display(res);
+      #5
+      opcode = 6'b100100; // AND
+      #1
+      $display(res);
+      #5
+      opcode = 6'b100101; // OR (deberia dar 3)
+      a = 8'b00000011;
+      b = 8'b00000001;
+      #1
+      $display(res);
+      #5
+      opcode = 6'b100110; // XOR (deberia dar 2)
+      #1
+      $display(res);
+      #5
+      opcode = 6'b100111; // NOR (deberia dar 252)
+      #1
+      $display(res);
+      #5
+      opcode = 6'b000011;
+      a = 8'b10000011;
+      b = 8'b00000001;
+      #1
+      $display(res);
+      #5
+      opcode = 6'b000010; // SRL (deberia dar 65)
+      #1
+      $display(res);
+      
+      
+      
       $finish;
     end
 endmodule
