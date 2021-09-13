@@ -6,7 +6,7 @@ module ALU #(
   input wire [NB_OPERANDO - 1 : 0] dato_a,
   input wire [NB_OPERANDO - 1 : 0] dato_b,
   input wire [NB_OPCODE - 1 : 0] opcode,
-  output reg [NB_OUT - 1 : 0] out
+  output wire [NB_OUT - 1 : 0] out
 );
 
   localparam ADD = 6'b100000;
@@ -17,6 +17,8 @@ module ALU #(
   localparam SRA = 6'b000011;
   localparam SRL = 6'b000010;
   localparam NOR = 6'b100111;
+
+  reg [NB_OUT-1:0] result;
 
 
   always @(*) begin : ALU_operation
@@ -29,5 +31,7 @@ module ALU #(
       NOR: !(dato_a | dato_b);
     endcase
   end
+
+  assign out =  result[NB_OUT:0];
 
 endmodule
