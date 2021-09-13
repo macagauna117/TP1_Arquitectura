@@ -17,11 +17,17 @@ module ALU #(
   localparam SRA = 6'b000011;
   localparam SRL = 6'b000010;
   localparam NOR = 6'b100111;
+  
+  //Internal regs and wires
+  reg            [NB_OUT-1:0]      result;
 
   always @(*) begin : ALU_operation
     case (opcode)
-      ADD: out = dato_a + dato_b;
+      ADD: result = dato_a + dato_b;
 
   end
+
+  //Output assign
+  assign out   =   result [NB_OUT-1 : 0];
 
 endmodule
