@@ -1,6 +1,26 @@
-// Code your testbench here
-// or browse Examples
-module testbench_ej1;
+`timescale 1ns / 10ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 09/16/2021 05:19:40 PM
+// Design Name: 
+// Module Name: tb_ALU
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
+module tb_ALU;
   
   reg [7:0] a;
   reg [7:0] b;
@@ -58,3 +78,23 @@ module testbench_ej1;
       $finish;
     end
 endmodule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,5 @@
+`timescale 1ns / 10ps
+
 module ALU #(
   parameter NB_OPERANDO = 8,
   parameter NB_OUT = NB_OPERANDO,
@@ -30,10 +32,10 @@ module ALU #(
       SRA: result = dato_a >>> dato_b;
       SRL: result = dato_a >> dato_b;
       XOR: result = dato_a ^ dato_b;
-      NOR: result = dato_a ~| dato_b;
+      NOR: result = ~(dato_a | dato_b);
     endcase
   end
 
-  assign out =  result[NB_OUT:0];
+  assign out =  result[NB_OUT - 1:0];
 
 endmodule

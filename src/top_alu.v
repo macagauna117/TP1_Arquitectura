@@ -1,21 +1,44 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date: 09/18/2021 03:21:13 PM
+// Design Name: 
+// Module Name: top_alu
+// Project Name: 
+// Target Devices: 
+// Tool Versions: 
+// Description: 
+// 
+// Dependencies: 
+// 
+// Revision:
+// Revision 0.01 - File Created
+// Additional Comments:
+// 
+//////////////////////////////////////////////////////////////////////////////////
+
+
 module top_alu
 #(
     //¨PARAMETERS
     parameter           NB_OPERANDO = 8,
-    parameter           NB_OPCODE   = 6
+    parameter           NB_OPCODE   = 6,
+    parameter           NB_OUT      = NB_OPERANDO
   )
  (  
     //INPUTS 
     input   wire                  i_clk       ,
     input   wire                  i_reset     ,
     input   wire    [NB_OPERANDO-1:0] i_switch    ,
-    input   wire                  i_boton_1   ,
-    input   wire                  i_boton_2   ,
-    input   wire                  i_boton_3   ,
-    input   wire                  i_boton_4   ,
+    input   wire                  i_boton_1   , // Dato A
+    input   wire                  i_boton_2   , // Dato B
+    input   wire                  i_boton_3   , // Operacion
+    input   wire                  i_boton_4   , // Actualizar resultado
     
     //OUTPUT
-    output  wire    [NB_OUT-1:0] out
+    output  wire    [NB_OUT-1:0] out // SALIDA
      
   );
   
