@@ -23,12 +23,23 @@
 //////////////////
 //Testbech general
 //////////////////
-module testbench_top();
+module testbench_top # (
+  parameter        NB_OPERANDO = 8,
+  parameter        NB_OPCODE   = 6,
+  parameter        NB_OUT      = NB_OPERANDO
+)
+(
+    output reg clk,
+    output reg reset,
+    output reg    [NB_OPERANDO-1:0] switch,
+    output reg boton_1,
+    output reg boton_2,
+    output reg boton_3,
+    output reg boton_4
+);
 
   //Local parameters
-  localparam        NB_OPERANDO = 8;
-  localparam        NB_OPCODE   = 6;
-  localparam        NB_OUT      = NB_OPERANDO;
+
   //Operaciones
   localparam        ADD = 6'b100_000    ;
   localparam        SUB = 6'b100_010    ;
@@ -40,13 +51,8 @@ module testbench_top();
   localparam        NOR = 6'b100_111    ; 
   
   //Inputs 
-  reg                  clk          ;
-  reg                  reset        ;
-  reg    [NB_OPERANDO-1:0] switch       ;
-  reg                  boton_1      ;
-  reg                  boton_2      ;
-  reg                  boton_3      ;
-  reg                  boton_4      ;
+  
+
 
   //Flags
   reg                   test_start  ;

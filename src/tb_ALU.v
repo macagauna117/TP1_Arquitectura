@@ -1,4 +1,4 @@
-`timescale 1ns / 10ps
+`timescale 10ns / 100ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
 // Engineer: 
@@ -31,7 +31,6 @@ module tb_ALU;
   
   initial
     begin
-      $dumpfile("dump.vcd"); $dumpvars;
       #0
       a = 8'b00001000;
       b = 8'b00000010;

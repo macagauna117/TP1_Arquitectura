@@ -1,4 +1,4 @@
-`timescale 1ns / 10ps
+`timescale 10ns / 100ps
 
 module ALU #(
   parameter NB_OPERANDO = 8,
@@ -8,7 +8,7 @@ module ALU #(
   input wire [NB_OPERANDO - 1 : 0] dato_a,
   input wire [NB_OPERANDO - 1 : 0] dato_b,
   input wire [NB_OPCODE - 1 : 0] opcode,
-  output wire [NB_OUT - 1 : 0] out
+  output reg [NB_OUT - 1 : 0] out
 );
 
   localparam ADD = 6'b100000;
@@ -20,22 +20,20 @@ module ALU #(
   localparam SRL = 6'b000010;
   localparam NOR = 6'b100111;
 
-  reg [NB_OUT-1:0] result;
 
 
   always @(*) begin : ALU_operation
     case (opcode)
-      ADD: result = dato_a + dato_b;
-      SUB: result = dato_a - dato_b;
-      AND: result = dato_a & dato_b;
-      OR:  result = dato_a | dato_b;
-      SRA: result = dato_a >>> dato_b;
-      SRL: result = dato_a >> dato_b;
-      XOR: result = dato_a ^ dato_b;
-      NOR: result = ~(dato_a | dato_b);
+      ADD: out = dato_a + dato_b;
+      SUB: out = dato_a - dato_b;
+      AND: out = dato_a & dato_b;
+      OR:  out = dato_a | dato_b;
+      SRA: out = dato_a >>> dato_b;
+      SRL: out = dato_a >> dato_b;
+      XOR: out = dato_a ^ dato_b;
+      NOR: out = ~(dato_a | dato_b);
     endcase
   end
 
-  assign out =  result[NB_OUT - 1:0];
 
 endmodule
