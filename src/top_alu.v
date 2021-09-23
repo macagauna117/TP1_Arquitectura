@@ -1,24 +1,4 @@
 `timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 09/18/2021 03:21:13 PM
-// Design Name: 
-// Module Name: top_alu
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
-
 
 module top_alu
 #(
@@ -31,6 +11,7 @@ module top_alu
     //INPUTS 
     input   wire                  i_clk       ,
     input   wire                  i_reset     ,
+    input   wire                  i_enable    ,
     input   wire    [NB_OPERANDO-1:0] i_switch    ,
     input   wire                  i_boton_1   , // Dato A
     input   wire                  i_boton_2   , // Dato B
@@ -38,7 +19,7 @@ module top_alu
     input   wire                  i_boton_4   , // Actualizar resultado
     
     //OUTPUT
-    output  wire    [NB_OUT-1:0] out // SALIDA
+    output  reg    [NB_OUT-1:0] out // SALIDA
      
   );
   
@@ -50,7 +31,9 @@ module top_alu
   reg   [NB_OPCODE  -1:0]   opcode     ;
  
   wire  [NB_OUT-1:0]   result       ;
-  reg   [NB_OUT-1:0]   reg_resultado   ;
+  
+  //Module instance
+  ALU instance_ALU(.dato_a(a), .dato_b(b), .out(result), .opcode(opcode));
 
   
   always @(posedge i_clk) begin
@@ -58,20 +41,15 @@ module top_alu
         a  <= {NB_OPERANDO{1'b0}};
         b  <= {NB_OPERANDO{1'b0}};
         opcode <= {NB_OPCODE{1'b0}};
-        reg_resultado <= {NB_OUT{1'b0}};
+        out <= {NB_OUT{1'b0}};
     end
     else begin
         if      (i_boton_1)    a        <= i_switch             ;
         else if (i_boton_2)    b        <= i_switch             ;
         else if (i_boton_3)    opcode       <= i_switch[NB_OPCODE-1:0]  ;
-        else if (i_boton_4)    reg_resultado <= result            ;
+        else if (i_boton_4)    out <= result            ;
     end  
   end
-  
-  //Output assign
-  assign out = reg_resultado[NB_OUT-1:0]   ;
-  
-  //Module instance
-  ALU instance_ALU(.dato_a(a), .dato_b(b), .out(out), .opcode(opcode));
+
 
 endmodule
