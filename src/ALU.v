@@ -33,6 +33,7 @@ module ALU #(
       SRL: result = dato_a >> dato_b;
       XOR: result = dato_a ^ dato_b;
       NOR: result = ~(dato_a | dato_b);
+      default: result = {NB_OUT{1'b0}};
     endcase
   end
 
